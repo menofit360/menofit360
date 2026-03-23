@@ -19,8 +19,6 @@
 }
 html,body{height:100%;background:var(--blush);font-family:'DM Sans',sans-serif;color:var(--text);overflow:hidden;}
 .app{display:flex;flex-direction:column;height:100vh;height:100dvh;max-width:480px;margin:0 auto;background:var(--surface);}
-
-/* HEADER */
 .header{background:var(--surface);border-bottom:1px solid var(--border);padding:max(env(safe-area-inset-top),14px) 18px 14px;flex-shrink:0;}
 .header-inner{display:flex;align-items:center;justify-content:space-between;}
 .logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--rose-dark);}
@@ -31,38 +29,26 @@ html,body{height:100%;background:var(--blush);font-family:'DM Sans',sans-serif;c
 .upload-pill{position:relative;overflow:hidden;padding:6px 12px;border-radius:20px;border:1px solid var(--border);background:var(--blush);font-size:11px;font-weight:600;color:var(--text2);cursor:pointer;display:flex;align-items:center;gap:5px;}
 .upload-pill input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;font-size:0;}
 .upload-pill.loaded{background:var(--green-bg);border-color:var(--green);color:var(--green);}
-
-/* SCROLL */
 .scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;}
-
-/* SCREENS */
 .screen{display:none;padding:16px;}
 .screen.active{display:block;}
-
-/* BOTTOM NAV */
 .bottom-nav{display:flex;background:var(--surface);border-top:1px solid var(--border);padding:8px 0;padding-bottom:max(env(safe-area-inset-bottom),8px);flex-shrink:0;}
 .bnav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;padding:4px 0;}
 .bnav-icon{font-size:22px;}
 .bnav-label{font-size:10px;font-weight:500;color:var(--text3);}
 .bnav-item.active .bnav-label{color:var(--rose);font-weight:600;}
-
-/* EMPTY STATE */
 .empty-state{text-align:center;padding:48px 24px;}
 .es-icon{font-size:48px;margin-bottom:16px;}
 .es-title{font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--text);margin-bottom:8px;}
 .es-sub{font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:20px;}
 .es-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:22px;background:var(--rose);color:#fff;border:none;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;position:relative;overflow:hidden;}
 .es-btn input{position:absolute;inset:0;opacity:0;cursor:pointer;font-size:0;width:100%;height:100%;}
-
-/* PROCESSING */
 .proc-overlay{display:none;position:fixed;inset:0;background:rgba(253,240,243,.95);z-index:300;flex-direction:column;align-items:center;justify-content:center;gap:14px;}
 .proc-overlay.show{display:flex;}
 .spin{width:48px;height:48px;border:3px solid var(--rose-light);border-top-color:var(--rose);border-radius:50%;animation:sp .8s linear infinite;}
 @keyframes sp{to{transform:rotate(360deg)}}
 .proc-txt{font-size:15px;color:var(--text2);font-weight:500;}
-.proc-sub{font-size:13px;color:var(--text3);}
-
-/* ── MENÚ SCREEN ── */
+.proc-sub{font-size:13px;color:var(--text3);text-align:center;max-width:260px;}
 .menu-hero{background:linear-gradient(135deg,var(--rose-dark),var(--rose));border-radius:16px;padding:18px 20px;color:#fff;margin-bottom:16px;}
 .mh-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;}
 .mh-sub{font-size:13px;opacity:.85;margin-top:2px;}
@@ -72,7 +58,7 @@ html,body{height:100%;background:var(--blush);font-family:'DM Sans',sans-serif;c
 .mhm-lbl{font-size:10px;opacity:.8;margin-top:1px;}
 .day-scroll{display:flex;gap:6px;overflow-x:auto;margin-bottom:14px;padding-bottom:4px;}
 .day-scroll::-webkit-scrollbar{display:none;}
-.daybtn{padding:7px 16px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--text2);white-space:nowrap;flex-shrink:0;font-family:'DM Sans',sans-serif;transition:all .15s;}
+.daybtn{padding:7px 16px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--text2);white-space:nowrap;flex-shrink:0;font-family:'DM Sans',sans-serif;}
 .daybtn.active{background:var(--rose);color:#fff;border-color:var(--rose);}
 .meal-cards{display:flex;flex-direction:column;gap:10px;}
 .meal-c{background:var(--blush);border-radius:14px;border:1px solid var(--border);padding:14px 16px;}
@@ -82,8 +68,6 @@ html,body{height:100%;background:var(--blush);font-family:'DM Sans',sans-serif;c
 .mc-raciones{margin-left:auto;font-size:11px;font-weight:600;color:var(--rose-dark);background:var(--rose-light);padding:3px 9px;border-radius:10px;}
 .mc-desc{font-size:13px;color:var(--text2);line-height:1.55;}
 .mc-change{display:flex;align-items:center;gap:6px;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);font-size:12px;color:var(--rose);font-weight:500;cursor:pointer;}
-
-/* ── CHAT SCREEN ── */
 .chat-wrap{display:flex;flex-direction:column;height:calc(100dvh - 130px);}
 .chat-msgs{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column;gap:10px;padding:4px 0 8px;}
 .msg{display:flex;gap:8px;align-items:flex-end;animation:fu .2s ease;}
@@ -104,20 +88,18 @@ html,body{height:100%;background:var(--blush);font-family:'DM Sans',sans-serif;c
 .quick-pills::-webkit-scrollbar{display:none;}
 .qpill{white-space:nowrap;padding:7px 13px;border-radius:20px;border:1px solid var(--border);background:var(--surface);font-size:12px;font-weight:500;color:var(--text2);cursor:pointer;font-family:'DM Sans',sans-serif;flex-shrink:0;}
 .chat-bar{display:flex;gap:8px;align-items:flex-end;padding-top:8px;border-top:1px solid var(--border);}
-.chat-iw{flex:1;background:var(--blush);border:1px solid var(--border);border-radius:22px;display:flex;align-items:center;padding:2px 4px 2px 14px;transition:border-color .15s;}
+.chat-iw{flex:1;background:var(--blush);border:1px solid var(--border);border-radius:22px;display:flex;align-items:center;padding:2px 4px 2px 14px;}
 .chat-iw:focus-within{border-color:var(--rose);}
 .chat-ta{flex:1;border:none;background:transparent;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--text);resize:none;outline:none;max-height:80px;padding:8px 0;line-height:1.4;}
 .chat-ta::placeholder{color:var(--text3);}
 .send-btn{width:38px;height:38px;border-radius:50%;background:var(--rose);border:none;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;}
 .send-btn:disabled{opacity:.4;}
 .send-btn svg{width:14px;height:14px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
-
-/* ── FOTO SCREEN ── */
-.foto-upload{border:2px dashed var(--rose-mid);border-radius:14px;padding:28px 20px;text-align:center;background:var(--blush);cursor:pointer;position:relative;margin-bottom:14px;transition:all .2s;}
+.foto-upload{border:2px dashed var(--rose-mid);border-radius:14px;padding:28px 20px;text-align:center;background:var(--blush);cursor:pointer;position:relative;margin-bottom:14px;}
 .foto-upload.has-img{border-color:var(--rose);border-style:solid;padding:0;overflow:hidden;}
 .fu-input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;font-size:0;}
 #prev-img{width:100%;max-height:250px;object-fit:cover;border-radius:12px;display:none;}
-.analyze-btn{width:100%;padding:13px;border-radius:22px;background:var(--rose);color:#fff;border:none;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;margin-bottom:14px;transition:opacity .15s;}
+.analyze-btn{width:100%;padding:13px;border-radius:22px;background:var(--rose);color:#fff;border:none;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;margin-bottom:14px;}
 .analyze-btn:disabled{opacity:.45;cursor:not-allowed;}
 .result-card{background:var(--surface);border-radius:14px;border:1px solid var(--border);overflow:hidden;display:none;}
 .rc-header{padding:14px 16px;border-bottom:1px solid var(--border);}
@@ -134,17 +116,10 @@ html,body{height:100%;background:var(--blush);font-family:'DM Sans',sans-serif;c
 .mbox-lbl{font-size:10px;color:var(--text2);margin-top:3px;}
 .ings{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px;}
 .ing{padding:4px 10px;border-radius:20px;background:var(--blush2);font-size:12px;color:var(--text2);}
-.conf-badge{display:inline-block;font-size:11px;font-weight:500;padding:3px 10px;border-radius:20px;margin-bottom:10px;}
-.conf-alta{background:var(--green-bg);color:var(--green);}
-.conf-media{background:var(--amber-bg);color:var(--amber);}
-.conf-baja{background:var(--blush2);color:var(--text3);}
 .ai-note{font-size:12px;color:var(--text3);background:var(--blush);border-radius:8px;padding:8px 12px;margin-bottom:12px;line-height:1.5;}
 .add-log-btn{width:100%;padding:12px;border-radius:20px;background:var(--green);color:#fff;border:none;font-size:14px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;}
 .reset-btn{width:100%;padding:10px;border-radius:20px;background:transparent;color:var(--text2);border:1px solid var(--border);font-size:13px;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:8px;}
-
-/* ── REGISTRO SCREEN ── */
 .reg-hero{background:linear-gradient(135deg,var(--blush),var(--blush2));border-radius:14px;padding:16px 18px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;}
-.rh-left{}
 .rh-date{font-size:12px;color:var(--text3);font-weight:500;text-transform:uppercase;letter-spacing:.06em;}
 .rh-kcal{font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:600;color:var(--rose-dark);line-height:1;}
 .rh-sub{font-size:12px;color:var(--text2);margin-top:2px;}
@@ -153,8 +128,6 @@ html,body{height:100%;background:var(--blush);font-family:'DM Sans',sans-serif;c
 .mb-row{margin-bottom:10px;}
 .mb-row:last-child{margin-bottom:0;}
 .mb-top{display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px;}
-.mb-name{font-weight:500;color:var(--text);}
-.mb-val{color:var(--text2);}
 .mb-track{height:8px;border-radius:4px;background:var(--blush2);overflow:hidden;}
 .mb-fill{height:100%;border-radius:4px;transition:width .7s ease;}
 .fp{background:#3B6A9A;}.fc{background:var(--amber);}.fg{background:var(--green);}
@@ -172,8 +145,6 @@ html,body{height:100%;background:var(--blush);font-family:'DM Sans',sans-serif;c
 </head>
 <body>
 <div class="app">
-
-  <!-- HEADER -->
   <div class="header">
     <div class="header-inner">
       <div class="logo">MENOFIT<span>360</span></div>
@@ -182,24 +153,21 @@ html,body{height:100%;background:var(--blush);font-family:'DM Sans',sans-serif;c
         <label class="upload-pill" id="upload-pill">
           <span id="pill-icon">📄</span>
           <span id="pill-text">Subir menú PDF</span>
-          <input type="file" accept="application/pdf" id="pdf-input">
+          <input type="file" accept="application/pdf,.pdf" id="pdf-input">
         </label>
       </div>
     </div>
   </div>
 
-  <!-- SCROLL AREA -->
   <div class="scroll" id="scroll-area">
-
-    <!-- MENÚ -->
     <div class="screen active" id="scr-menu">
       <div id="menu-empty" class="empty-state">
         <div class="es-icon">🥗</div>
         <div class="es-title">Tu menú semanal</div>
-        <div class="es-sub">Sube el PDF que te ha enviado tu coach y lo tendrás listo al instante. Podrás ver cada comida, pedir alternativas y recetas nuevas.</div>
+        <div class="es-sub">Sube el PDF que te ha enviado tu coach y lo tendrás listo al instante.</div>
         <label class="es-btn">
           📄 Subir mi menú PDF
-          <input type="file" accept="application/pdf" id="pdf-input-2">
+          <input type="file" accept="application/pdf,.pdf" id="pdf-input-2">
         </label>
       </div>
       <div id="menu-content" style="display:none">
@@ -213,13 +181,12 @@ html,body{height:100%;background:var(--blush);font-family:'DM Sans',sans-serif;c
       </div>
     </div>
 
-    <!-- CHAT -->
     <div class="screen" id="scr-chat">
       <div class="chat-wrap">
         <div class="chat-msgs" id="chat-msgs"></div>
-        <div class="quick-pills" id="quick-pills">
+        <div class="quick-pills">
           <div class="qpill" onclick="cq('¿Qué me toca comer hoy?')">📋 Menú de hoy</div>
-          <div class="qpill" onclick="cq('Quiero cambiar la comida, mismas raciones')">🔄 Cambiar comida</div>
+          <div class="qpill" onclick="cq('Quiero cambiar la comida de hoy, mismas raciones')">🔄 Cambiar comida</div>
           <div class="qpill" onclick="cq('Dame una receta diferente para el desayuno')">👩‍🍳 Receta nueva</div>
           <div class="qpill" onclick="cq('¿Qué tomar si tengo hambre entre horas?')">🍎 Snack</div>
           <div class="qpill" onclick="cq('¿Qué alimentos ayudan con los sofocos?')">🌡️ Sofocos</div>
@@ -235,7 +202,6 @@ html,body{height:100%;background:var(--blush);font-family:'DM Sans',sans-serif;c
       </div>
     </div>
 
-    <!-- FOTO -->
     <div class="screen" id="scr-foto">
       <div class="foto-upload" id="foto-zone">
         <input type="file" accept="image/*" capture="environment" class="fu-input" id="foto-input">
@@ -243,7 +209,7 @@ html,body{height:100%;background:var(--blush);font-family:'DM Sans',sans-serif;c
         <div id="foto-ph" style="padding:28px 20px;">
           <div style="font-size:40px;margin-bottom:12px">🍽️</div>
           <div style="font-size:15px;font-weight:600;color:var(--rose-dark)">Haz una foto a tu plato</div>
-          <div style="font-size:13px;color:var(--text3);margin-top:6px;line-height:1.5">La IA analizará los ingredientes<br>y calculará los macros al instante</div>
+          <div style="font-size:13px;color:var(--text3);margin-top:6px;line-height:1.5">La IA calculará los macros al instante</div>
         </div>
       </div>
       <button class="analyze-btn" id="analyze-btn" disabled onclick="analyzePhoto()">Analizar con IA</button>
@@ -255,18 +221,16 @@ html,body{height:100%;background:var(--blush);font-family:'DM Sans',sans-serif;c
         <div class="rc-body">
           <div class="macro-grid" id="macro-grid"></div>
           <div class="ings" id="ings-list"></div>
-          <div class="conf-badge" id="conf-badge"></div>
-          <div class="ai-note">⚠️ Estimación orientativa basada en una ración estándar. Ajusta si tu porción es diferente.</div>
+          <div class="ai-note">⚠️ Estimación orientativa. Ajusta si tu porción es diferente.</div>
           <button class="add-log-btn" onclick="addToLog()">✓ Añadir al registro del día</button>
           <button class="reset-btn" onclick="resetFoto()">Analizar otro plato</button>
         </div>
       </div>
     </div>
 
-    <!-- REGISTRO -->
     <div class="screen" id="scr-registro">
       <div class="reg-hero">
-        <div class="rh-left">
+        <div>
           <div class="rh-date" id="rh-date"></div>
           <div class="rh-kcal" id="rh-kcal">0 kcal</div>
           <div class="rh-sub" id="rh-sub">de objetivo diario</div>
@@ -277,424 +241,246 @@ html,body{height:100%;background:var(--blush);font-family:'DM Sans',sans-serif;c
         </svg>
       </div>
       <div class="macro-bars">
-        <div class="mb-row">
-          <div class="mb-top"><span class="mb-name">Proteínas</span><span class="mb-val" id="p-lbl">0g</span></div>
-          <div class="mb-track"><div class="mb-fill fp" id="p-bar" style="width:0%"></div></div>
-        </div>
-        <div class="mb-row">
-          <div class="mb-top"><span class="mb-name">Carbohidratos</span><span class="mb-val" id="c-lbl">0g</span></div>
-          <div class="mb-track"><div class="mb-fill fc" id="c-bar" style="width:0%"></div></div>
-        </div>
-        <div class="mb-row">
-          <div class="mb-top"><span class="mb-name">Grasas</span><span class="mb-val" id="g-lbl">0g</span></div>
-          <div class="mb-track"><div class="mb-fill fg" id="g-bar" style="width:0%"></div></div>
-        </div>
+        <div class="mb-row"><div class="mb-top"><span style="font-weight:500">Proteínas</span><span id="p-lbl" style="color:var(--text2)">0g</span></div><div class="mb-track"><div class="mb-fill fp" id="p-bar" style="width:0%"></div></div></div>
+        <div class="mb-row"><div class="mb-top"><span style="font-weight:500">Carbohidratos</span><span id="c-lbl" style="color:var(--text2)">0g</span></div><div class="mb-track"><div class="mb-fill fc" id="c-bar" style="width:0%"></div></div></div>
+        <div class="mb-row"><div class="mb-top"><span style="font-weight:500">Grasas</span><span id="g-lbl" style="color:var(--text2)">0g</span></div><div class="mb-track"><div class="mb-fill fg" id="g-bar" style="width:0%"></div></div></div>
       </div>
       <div class="food-card">
         <div class="fc-header">Alimentos registrados hoy</div>
         <div id="food-list"><div class="reg-empty">Todavía no has registrado nada hoy.<br>Analiza un plato con la cámara 📷</div></div>
       </div>
     </div>
-
   </div>
 
-  <!-- BOTTOM NAV -->
   <nav class="bottom-nav">
-    <div class="bnav-item active" id="nav-menu" onclick="goScreen('menu',this)">
-      <div class="bnav-icon">🗓️</div><div class="bnav-label">Menú</div>
-    </div>
-    <div class="bnav-item" id="nav-chat" onclick="goScreen('chat',this)">
-      <div class="bnav-icon">💬</div><div class="bnav-label">Asistente</div>
-    </div>
-    <div class="bnav-item" id="nav-foto" onclick="goScreen('foto',this)">
-      <div class="bnav-icon">📷</div><div class="bnav-label">Analizar</div>
-    </div>
-    <div class="bnav-item" id="nav-reg" onclick="goScreen('registro',this)">
-      <div class="bnav-icon">📝</div><div class="bnav-label">Registro</div>
-    </div>
+    <div class="bnav-item active" id="nav-menu" onclick="goScreen('menu',this)"><div class="bnav-icon">🗓️</div><div class="bnav-label">Menú</div></div>
+    <div class="bnav-item" id="nav-chat" onclick="goScreen('chat',this)"><div class="bnav-icon">💬</div><div class="bnav-label">Asistente</div></div>
+    <div class="bnav-item" id="nav-foto" onclick="goScreen('foto',this)"><div class="bnav-icon">📷</div><div class="bnav-label">Analizar</div></div>
+    <div class="bnav-item" id="nav-reg" onclick="goScreen('registro',this)"><div class="bnav-icon">📝</div><div class="bnav-label">Registro</div></div>
   </nav>
 </div>
 
-<!-- PROCESSING OVERLAY -->
 <div class="proc-overlay" id="proc">
   <div class="spin"></div>
   <div class="proc-txt">Leyendo tu menú...</div>
-  <div class="proc-sub">La IA analiza raciones y gramos</div>
+  <div class="proc-sub">Esto puede tardar hasta 30 segundos en iPhone. No cierres la app.</div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
 <script>
-pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
+// PDF reading using FileReader only — no external library needed, iOS compatible
+const icons = {desayuno:'🌅',almuerzo:'🍎',comida:'🍽️',merienda:'☕',cena:'🌙'};
+let menuData=null, chatHistory=[], chatBusy=false, photoB64=null, logItems=[], lastResult=null;
 
-let menuData = null;
-let chatHistory = [];
-let chatBusy = false;
-let photoB64 = null;
-let logItems = [];
-let activeDay = '1';
-let lastResult = null;
-
-const icons = { desayuno:'🌅', almuerzo:'🍎', comida:'🍽️', merienda:'☕', cena:'🌙' };
-
-/* ── NAV ── */
-function goScreen(id, el) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.bnav-item').forEach(b => b.classList.remove('active'));
-  document.getElementById('scr-' + id).classList.add('active');
-  if (el) el.classList.add('active');
-  document.getElementById('scroll-area').scrollTop = 0;
+function goScreen(id,el){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.bnav-item').forEach(b=>b.classList.remove('active'));
+  document.getElementById('scr-'+id).classList.add('active');
+  if(el)el.classList.add('active');
+  document.getElementById('scroll-area').scrollTop=0;
 }
 
-/* ── PDF INPUT (both triggers) ── */
-function setupPDFInput(inputId) {
-  document.getElementById(inputId).addEventListener('change', async e => {
-    const file = e.target.files[0];
-    if (!file) return;
+// PDF handling — send raw base64 to Claude to extract text (iOS safe)
+function setupPDF(id){
+  document.getElementById(id).addEventListener('change', async e=>{
+    const file=e.target.files[0]; if(!file) return;
     document.getElementById('proc').classList.add('show');
     try {
-      const text = await readPDF(file);
-      await parseMenuWithAI(text);
-    } catch(err) {
+      // Convert PDF to base64 and send to Claude to extract + parse
+      const b64 = await fileToBase64(file);
+      await parsePDFWithClaude(b64);
+    } catch(err){
       document.getElementById('proc').classList.remove('show');
-      alert('No pude leer el PDF. Asegúrate de que es un PDF válido e inténtalo de nuevo.');
+      alert('No se pudo leer el PDF. Asegúrate de que el archivo no está protegido e inténtalo de nuevo.');
       console.error(err);
     }
   });
 }
-setupPDFInput('pdf-input');
-setupPDFInput('pdf-input-2');
+setupPDF('pdf-input');
+setupPDF('pdf-input-2');
 
-async function readPDF(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = async function(e) {
-      try {
-        const typedArray = new Uint8Array(e.target.result);
-        const loadingTask = pdfjsLib.getDocument({ data: typedArray });
-        const pdf = await loadingTask.promise;
-        let out = '';
-        for (let i = 1; i <= pdf.numPages; i++) {
-          const page = await pdf.getPage(i);
-          const content = await page.getTextContent();
-          out += content.items.map(x => x.str).join(' ') + '\n';
-        }
-        resolve(out);
-      } catch(err) {
-        reject(err);
-      }
-    };
-    reader.onerror = reject;
-    reader.readAsArrayBuffer(file);
+function fileToBase64(file){
+  return new Promise((resolve,reject)=>{
+    const reader=new FileReader();
+    reader.onload=e=>resolve(e.target.result.split(',')[1]);
+    reader.onerror=reject;
+    reader.readAsDataURL(file);
   });
 }
 
-async function parseMenuWithAI(raw) {
-  const res = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 4000,
-      messages: [{ role: 'user', content: `Analiza este texto de un menú nutricional semanal y devuelve SOLO JSON válido, sin markdown, sin backticks, sin texto extra.
+async function parsePDFWithClaude(b64){
+  const res = await fetch('https://api.anthropic.com/v1/messages',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({
+      model:'claude-sonnet-4-20250514',
+      max_tokens:4000,
+      messages:[{
+        role:'user',
+        content:[
+          {type:'document', source:{type:'base64', media_type:'application/pdf', data:b64}},
+          {type:'text', text:`Analiza este menú nutricional y devuelve SOLO JSON válido sin markdown ni backticks.
 
 Estructura exacta:
-{
-  "raciones_totales": número,
-  "macros_diarios": { "proteinas": número, "hidratos": número, "grasas": número },
-  "distribucion": {
-    "desayuno": { "proteinas": número, "hidratos": número, "grasas": número },
-    "almuerzo": { "proteinas": número, "hidratos": número, "grasas": número },
-    "comida": { "proteinas": número, "hidratos": número, "grasas": número },
-    "merienda": { "proteinas": número, "hidratos": número, "grasas": número },
-    "cena": { "proteinas": número, "hidratos": número, "grasas": número }
-  },
-  "dias": {
-    "1": {
-      "desayuno": { "descripcion": "texto con gramos exactos", "raciones": "P:X HC:X G:X" },
-      "almuerzo": { "descripcion": "...", "raciones": "..." },
-      "comida": { "descripcion": "...", "raciones": "..." },
-      "merienda": { "descripcion": "...", "raciones": "..." },
-      "cena": { "descripcion": "...", "raciones": "..." }
-    }
-  }
-}
+{"raciones_totales":número,"macros_diarios":{"proteinas":número,"hidratos":número,"grasas":número},"distribucion":{"desayuno":{"proteinas":0,"hidratos":0,"grasas":0},"almuerzo":{"proteinas":0,"hidratos":0,"grasas":0},"comida":{"proteinas":0,"hidratos":0,"grasas":0},"merienda":{"proteinas":0,"hidratos":0,"grasas":0},"cena":{"proteinas":0,"hidratos":0,"grasas":0}},"dias":{"1":{"desayuno":{"descripcion":"texto con gramos exactos","raciones":"P:X HC:X G:X"},"almuerzo":{"descripcion":"...","raciones":"..."},"comida":{"descripcion":"...","raciones":"..."},"merienda":{"descripcion":"...","raciones":"..."},"cena":{"descripcion":"...","raciones":"..."}}}}
 
-Extrae TODOS los gramos y cantidades exactas. Incluye todos los días disponibles.
-
-TEXTO:\n${raw}` }]
+Extrae TODOS los gramos y cantidades exactas. Incluye todos los días disponibles.`}
+        ]
+      }]
     })
   });
-  const data = await res.json();
-  const txt = data.content.map(b => b.text || '').join('').trim().replace(/```json|```/g, '').trim();
-  menuData = JSON.parse(txt);
+  const data=await res.json();
+  if(!res.ok) throw new Error(data.error?.message||'Error API');
+  const txt=data.content.map(b=>b.text||'').join('').trim().replace(/```json|```/g,'').trim();
+  menuData=JSON.parse(txt);
   document.getElementById('proc').classList.remove('show');
   onMenuLoaded();
 }
 
-function onMenuLoaded() {
-  const dias = Object.keys(menuData.dias || {});
-
-  // Update pill
-  const pill = document.getElementById('upload-pill');
+function onMenuLoaded(){
+  const dias=Object.keys(menuData.dias||{});
+  const pill=document.getElementById('upload-pill');
   pill.classList.add('loaded');
-  document.getElementById('pill-icon').textContent = '✅';
-  document.getElementById('pill-text').textContent = dias.length + ' días cargados';
-
-  // Show menu content
-  document.getElementById('menu-empty').style.display = 'none';
-  document.getElementById('menu-content').style.display = 'block';
-
-  // Hero
-  document.getElementById('mh-sub').textContent = dias.length + ' días · ' + menuData.raciones_totales + ' raciones/día';
-  document.getElementById('mh-macros').innerHTML =
+  document.getElementById('pill-icon').textContent='✅';
+  document.getElementById('pill-text').textContent=dias.length+' días cargados';
+  document.getElementById('menu-empty').style.display='none';
+  document.getElementById('menu-content').style.display='block';
+  document.getElementById('mh-sub').textContent=dias.length+' días · '+menuData.raciones_totales+' raciones/día';
+  document.getElementById('mh-macros').innerHTML=
     `<div class="mhm"><div class="mhm-val">P:${menuData.macros_diarios.proteinas}</div><div class="mhm-lbl">Proteínas</div></div>
      <div class="mhm"><div class="mhm-val">HC:${menuData.macros_diarios.hidratos}</div><div class="mhm-lbl">Hidratos</div></div>
      <div class="mhm"><div class="mhm-val">G:${menuData.macros_diarios.grasas}</div><div class="mhm-lbl">Grasas</div></div>`;
-
-  // Day tabs
-  const scroll = document.getElementById('day-scroll');
-  scroll.innerHTML = '';
-  dias.forEach(d => {
-    const b = document.createElement('button');
-    b.className = 'daybtn' + (d === '1' ? ' active' : '');
-    b.textContent = 'Día ' + d;
-    b.onclick = () => {
-      activeDay = d;
-      document.querySelectorAll('.daybtn').forEach(x => x.classList.remove('active'));
-      b.classList.add('active');
-      renderDayMeals(d);
-    };
+  const scroll=document.getElementById('day-scroll');
+  scroll.innerHTML='';
+  dias.forEach(d=>{
+    const b=document.createElement('button');
+    b.className='daybtn'+(d==='1'?' active':'');
+    b.textContent='Día '+d;
+    b.onclick=()=>{document.querySelectorAll('.daybtn').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderDayMeals(d);};
     scroll.appendChild(b);
   });
   renderDayMeals('1');
-
-  // Chat welcome
-  chatHistory = [];
-  document.getElementById('chat-msgs').innerHTML = '';
-  addChatMsg('ai', `¡Menú cargado! 🌸<br><br>Ya tengo tu plan: <strong>${menuData.raciones_totales} raciones diarias</strong> con P:${menuData.macros_diarios.proteinas} · HC:${menuData.macros_diarios.hidratos} · G:${menuData.macros_diarios.grasas}.<br><br>Puedo ayudarte con cambios, alternativas y recetas nuevas respetando siempre tus raciones. ¿Qué necesitas? 😊`);
-
-  // Update registro targets
+  chatHistory=[];
+  document.getElementById('chat-msgs').innerHTML='';
+  addChatMsg('ai','¡Menú cargado! 🌸<br><br>Ya tengo tu plan: <strong>'+menuData.raciones_totales+' raciones diarias</strong> con P:'+menuData.macros_diarios.proteinas+' · HC:'+menuData.macros_diarios.hidratos+' · G:'+menuData.macros_diarios.grasas+'.<br><br>Puedo ayudarte con cambios, alternativas y recetas. ¿Qué necesitas? 😊');
   updateRegistro();
 }
 
-function renderDayMeals(day) {
-  const comidas = menuData.dias[day];
-  if (!comidas) return;
-  document.getElementById('meal-cards').innerHTML = Object.entries(comidas).map(([k, v]) => `
+function renderDayMeals(day){
+  const comidas=menuData.dias[day]; if(!comidas) return;
+  document.getElementById('meal-cards').innerHTML=Object.entries(comidas).map(([k,v])=>`
     <div class="meal-c">
       <div class="mc-top">
-        <span class="mc-icon">${icons[k] || '🍴'}</span>
+        <span class="mc-icon">${icons[k]||'🍴'}</span>
         <span class="mc-name">${k}</span>
-        <span class="mc-raciones">${v.raciones || ''}</span>
+        <span class="mc-raciones">${v.raciones||''}</span>
       </div>
-      <div class="mc-desc">${v.descripcion || ''}</div>
-      <div class="mc-change" onclick="cq('Día ${day} · ${k}: ${v.descripcion}. Quiero una alternativa con exactamente las mismas raciones (${v.raciones})');goScreen('chat', document.getElementById('nav-chat'))">
+      <div class="mc-desc">${v.descripcion||''}</div>
+      <div class="mc-change" onclick="cq('Día ${day} · ${k}: ${v.descripcion}. Quiero una alternativa con exactamente las mismas raciones (${v.raciones})');goScreen('chat',document.getElementById('nav-chat'))">
         🔄 Quiero cambiarlo
       </div>
     </div>`).join('');
 }
 
-/* ── CHAT ── */
-function buildSys() {
-  if (!menuData) return `Eres la asistente nutricional de MENOFIT360 para mujeres en menopausia. No hay menú cargado todavía. Anima a la clienta a subirlo. Responde en español, de forma cálida.`;
-  const ms = Object.entries(menuData.dias).map(([d, cs]) =>
-    `DÍA ${d}:\n` + Object.entries(cs).map(([c, v]) => `  ${c.toUpperCase()} (${v.raciones}): ${v.descripcion}`).join('\n')
-  ).join('\n\n');
-  return `Eres la asistente nutricional de MENOFIT360, cálida y experta en nutrición para mujeres en menopausia.
-
-RACIONES DEL MENÚ: Total ${menuData.raciones_totales}/día · P:${menuData.macros_diarios.proteinas} HC:${menuData.macros_diarios.hidratos} G:${menuData.macros_diarios.grasas}
-DISTRIBUCIÓN: ${Object.entries(menuData.distribucion).map(([c, v]) => `${c} P:${v.proteinas} HC:${v.hidratos} G:${v.grasas}`).join(' | ')}
-EQUIVALENCIAS: 1P≈100-170g carne/pescado, 35g jamón, 50g pavo. 1HC≈20g pan, 60g patata, 35g arroz/pasta seco, 100-150g fruta. 1G≈5-10g AOVE, 15g queso, 15-30g aguacate.
-
-MENÚ COMPLETO:
-${ms}
-
-REGLAS:
-1. Alternativas con EXACTAMENTE las mismas raciones (P/HC/G) y gramos equivalentes
-2. Recetas con ingredientes y gramos exactos respetando las raciones de esa comida
-3. Indica siempre las raciones de lo que sugieras
-4. Español, cercana y motivadora, máx 220 palabras
-5. Usa emojis para hacer las respuestas más visuales
-6. Para síntomas de menopausia: fitoestrógenos, calcio, magnesio, omega-3`;
+function buildSys(){
+  if(!menuData) return 'Eres la asistente nutricional de MENOFIT360 para mujeres en menopausia. No hay menú cargado. Anima a subirlo. Responde en español.';
+  const ms=Object.entries(menuData.dias).map(([d,cs])=>'DÍA '+d+':\n'+Object.entries(cs).map(([c,v])=>'  '+c.toUpperCase()+' ('+v.raciones+'): '+v.descripcion).join('\n')).join('\n\n');
+  return 'Eres la asistente nutricional de MENOFIT360, cálida y experta en nutrición para mujeres en menopausia.\nRACIONES: Total '+menuData.raciones_totales+'/día · P:'+menuData.macros_diarios.proteinas+' HC:'+menuData.macros_diarios.hidratos+' G:'+menuData.macros_diarios.grasas+'\nEQUIVALENCIAS: 1P≈100-170g carne/pescado, 35g jamón. 1HC≈20g pan, 60g patata, 35g arroz seco, 100-150g fruta. 1G≈5-10g AOVE, 15g queso.\nMENÚ:\n'+ms+'\nREGLAS: Alternativas con exactamente las mismas raciones y gramos. Recetas con gramos exactos. Indica siempre las raciones. Español cercano máx 220 palabras. Emojis.';
 }
 
-async function chatSend() {
-  const ta = document.getElementById('chat-ta');
-  const text = ta.value.trim();
-  if (!text || chatBusy) return;
-  ta.value = ''; ta.style.height = 'auto';
-  addChatMsg('me', text);
-  chatHistory.push({ role: 'user', content: text });
-  chatBusy = true;
-  document.getElementById('send-btn').disabled = true;
+async function chatSend(){
+  const ta=document.getElementById('chat-ta');
+  const text=ta.value.trim(); if(!text||chatBusy) return;
+  ta.value=''; ta.style.height='auto';
+  addChatMsg('me',text);
+  chatHistory.push({role:'user',content:text});
+  chatBusy=true; document.getElementById('send-btn').disabled=true;
   showTyping();
-  try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 1000, system: buildSys(), messages: chatHistory })
-    });
-    const d = await res.json();
-    const reply = d.content.map(b => b.text || '').join('');
-    chatHistory.push({ role: 'assistant', content: reply });
-    removeTyping();
-    addChatMsg('ai', fmt(reply));
-  } catch(e) {
-    removeTyping();
-    addChatMsg('ai', '❗ Error de conexión. Inténtalo de nuevo.');
-  }
-  chatBusy = false;
-  document.getElementById('send-btn').disabled = false;
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:buildSys(),messages:chatHistory})});
+    const d=await res.json();
+    const reply=d.content.map(b=>b.text||'').join('');
+    chatHistory.push({role:'assistant',content:reply});
+    removeTyping(); addChatMsg('ai',fmt(reply));
+  }catch(e){removeTyping();addChatMsg('ai','❗ Error de conexión. Inténtalo de nuevo.');}
+  chatBusy=false; document.getElementById('send-btn').disabled=false;
 }
+function cq(t){document.getElementById('chat-ta').value=t;chatSend();}
+function addChatMsg(r,html){const a=document.getElementById('chat-msgs');const isMe=r==='me';const d=document.createElement('div');d.className='msg'+(isMe?' me':'');d.innerHTML='<div class="av '+(isMe?'av-me':'av-ai')+'">'+(isMe?'TÚ':'M')+'</div><div class="bubble '+(isMe?'b-me':'b-ai')+'">'+html+'</div>';a.appendChild(d);a.scrollTop=a.scrollHeight;}
+function showTyping(){const a=document.getElementById('chat-msgs');const d=document.createElement('div');d.className='msg';d.id='typ';d.innerHTML='<div class="av av-ai">M</div><div class="bubble b-ai"><div class="tdots"><span></span><span></span><span></span></div></div>';a.appendChild(d);a.scrollTop=a.scrollHeight;}
+function removeTyping(){const e=document.getElementById('typ');if(e)e.remove();}
+function fmt(t){return t.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\*(.*?)\*/g,'<em>$1</em>').replace(/\n\n/g,'<br><br>').replace(/\n/g,'<br>');}
+const cta=document.getElementById('chat-ta');
+cta.addEventListener('input',()=>{cta.style.height='auto';cta.style.height=Math.min(cta.scrollHeight,80)+'px';});
+cta.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();chatSend();}});
 
-function cq(t) { document.getElementById('chat-ta').value = t; chatSend(); }
-
-function addChatMsg(role, html) {
-  const area = document.getElementById('chat-msgs');
-  const isMe = role === 'me';
-  const d = document.createElement('div');
-  d.className = 'msg' + (isMe ? ' me' : '');
-  d.innerHTML = `<div class="av ${isMe ? 'av-me' : 'av-ai'}">${isMe ? 'TÚ' : 'M'}</div><div class="bubble ${isMe ? 'b-me' : 'b-ai'}">${html}</div>`;
-  area.appendChild(d);
-  area.scrollTop = area.scrollHeight;
-}
-function showTyping() {
-  const a = document.getElementById('chat-msgs');
-  const d = document.createElement('div'); d.className = 'msg'; d.id = 'typ';
-  d.innerHTML = `<div class="av av-ai">M</div><div class="bubble b-ai"><div class="tdots"><span></span><span></span><span></span></div></div>`;
-  a.appendChild(d); a.scrollTop = a.scrollHeight;
-}
-function removeTyping() { const e = document.getElementById('typ'); if (e) e.remove(); }
-function fmt(t) {
-  return t.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\*(.*?)\*/g, '<em>$1</em>').replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
-}
-
-const cta = document.getElementById('chat-ta');
-cta.addEventListener('input', () => { cta.style.height = 'auto'; cta.style.height = Math.min(cta.scrollHeight, 80) + 'px'; });
-cta.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); chatSend(); } });
-
-/* ── FOTO ANÁLISIS ── */
-document.getElementById('foto-input').addEventListener('change', e => {
-  const file = e.target.files[0]; if (!file) return;
-  const reader = new FileReader();
-  reader.onload = ev => {
-    photoB64 = ev.target.result.split(',')[1];
-    const img = document.getElementById('prev-img');
-    img.src = ev.target.result; img.style.display = 'block';
-    document.getElementById('foto-ph').style.display = 'none';
-    document.getElementById('foto-zone').classList.add('has-img');
-    document.getElementById('analyze-btn').disabled = false;
-    document.getElementById('result-card').style.display = 'none';
-  };
+document.getElementById('foto-input').addEventListener('change',e=>{
+  const file=e.target.files[0]; if(!file) return;
+  const reader=new FileReader();
+  reader.onload=ev=>{photoB64=ev.target.result.split(',')[1];const img=document.getElementById('prev-img');img.src=ev.target.result;img.style.display='block';document.getElementById('foto-ph').style.display='none';document.getElementById('foto-zone').classList.add('has-img');document.getElementById('analyze-btn').disabled=false;document.getElementById('result-card').style.display='none';};
   reader.readAsDataURL(file);
 });
 
-async function analyzePhoto() {
-  if (!photoB64) return;
-  const btn = document.getElementById('analyze-btn');
-  btn.textContent = 'Analizando...'; btn.disabled = true;
-  try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514', max_tokens: 800,
-        messages: [{ role: 'user', content: [
-          { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: photoB64 } },
-          { type: 'text', text: 'Analiza esta foto de comida. Devuelve SOLO JSON sin markdown: {"nombre":"nombre del plato en español","descripcion":"descripción breve 1 frase","kcal":número,"proteinas":número,"carbohidratos":número,"grasas":número,"ingredientes":["ingrediente1","ingrediente2"],"confianza":"alta|media|baja"}' }
-        ]}]
-      })
-    });
-    const d = await res.json();
-    const txt = d.content.map(b => b.text || '').join('').trim().replace(/```json|```/g, '').trim();
-    lastResult = JSON.parse(txt);
+async function analyzePhoto(){
+  if(!photoB64) return;
+  const btn=document.getElementById('analyze-btn');
+  btn.textContent='Analizando...'; btn.disabled=true;
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:800,messages:[{role:'user',content:[{type:'image',source:{type:'base64',media_type:'image/jpeg',data:photoB64}},{type:'text',text:'Analiza esta foto de comida. Devuelve SOLO JSON sin markdown: {"nombre":"nombre en español","descripcion":"descripción breve","kcal":número,"proteinas":número,"carbohidratos":número,"grasas":número,"ingredientes":["..."],"confianza":"alta|media|baja"}'}]}]})});
+    const d=await res.json();
+    const txt=d.content.map(b=>b.text||'').join('').trim().replace(/```json|```/g,'').trim();
+    lastResult=JSON.parse(txt);
     showPhotoResult(lastResult);
-  } catch(e) {
-    btn.textContent = 'Analizar con IA'; btn.disabled = false;
-    alert('No pude analizar la foto. Inténtalo de nuevo.');
-  }
+  }catch(e){btn.textContent='Analizar con IA';btn.disabled=false;alert('No pude analizar la foto. Inténtalo de nuevo.');}
 }
 
-function showPhotoResult(r) {
-  document.getElementById('rc-name').textContent = r.nombre || 'Plato analizado';
-  document.getElementById('rc-desc').textContent = r.descripcion || '';
-  document.getElementById('macro-grid').innerHTML = [
-    { v: r.kcal, u: 'kcal', l: 'Calorías', c: 'mbox-k' },
-    { v: r.proteinas, u: 'g', l: 'Proteína', c: 'mbox-p' },
-    { v: r.carbohidratos, u: 'g', l: 'Carbos', c: 'mbox-c' },
-    { v: r.grasas, u: 'g', l: 'Grasas', c: 'mbox-g' }
-  ].map(m => `<div class="mbox ${m.c}"><div class="mbox-val">${m.v}</div><div class="mbox-lbl">${m.u}<br>${m.l}</div></div>`).join('');
-  document.getElementById('ings-list').innerHTML = (r.ingredientes || []).map(i => `<span class="ing">${i}</span>`).join('');
-  const conf = r.confianza || 'media';
-  const badge = document.getElementById('conf-badge');
-  badge.textContent = conf === 'alta' ? '✓ Alta precisión' : conf === 'media' ? '~ Precisión media' : '⚠ Estimación aproximada';
-  badge.className = `conf-badge conf-${conf}`;
-  document.getElementById('result-card').style.display = 'block';
-  document.getElementById('analyze-btn').textContent = '✓ Analizado';
-  document.getElementById('scroll-area').scrollTop = 999;
+function showPhotoResult(r){
+  document.getElementById('rc-name').textContent=r.nombre||'Plato analizado';
+  document.getElementById('rc-desc').textContent=r.descripcion||'';
+  document.getElementById('macro-grid').innerHTML=[{v:r.kcal,u:'kcal',l:'Calorías',c:'mbox-k'},{v:r.proteinas,u:'g',l:'Proteína',c:'mbox-p'},{v:r.carbohidratos,u:'g',l:'Carbos',c:'mbox-c'},{v:r.grasas,u:'g',l:'Grasas',c:'mbox-g'}].map(m=>'<div class="mbox '+m.c+'"><div class="mbox-val">'+m.v+'</div><div class="mbox-lbl">'+m.u+'<br>'+m.l+'</div></div>').join('');
+  document.getElementById('ings-list').innerHTML=(r.ingredientes||[]).map(i=>'<span class="ing">'+i+'</span>').join('');
+  document.getElementById('result-card').style.display='block';
+  document.getElementById('analyze-btn').textContent='✓ Analizado';
+  document.getElementById('scroll-area').scrollTop=999;
 }
 
-function resetFoto() {
-  photoB64 = null;
-  document.getElementById('foto-input').value = '';
-  document.getElementById('prev-img').style.display = 'none'; document.getElementById('prev-img').src = '';
-  document.getElementById('foto-ph').style.display = 'block';
-  document.getElementById('foto-zone').classList.remove('has-img');
-  document.getElementById('analyze-btn').disabled = true; document.getElementById('analyze-btn').textContent = 'Analizar con IA';
-  document.getElementById('result-card').style.display = 'none';
-}
+function resetFoto(){photoB64=null;document.getElementById('foto-input').value='';const img=document.getElementById('prev-img');img.style.display='none';img.src='';document.getElementById('foto-ph').style.display='block';document.getElementById('foto-zone').classList.remove('has-img');document.getElementById('analyze-btn').disabled=true;document.getElementById('analyze-btn').textContent='Analizar con IA';document.getElementById('result-card').style.display='none';}
 
-/* ── REGISTRO ── */
-function addToLog() {
-  if (!lastResult) return;
-  logItems.push({
-    ico: '📷', name: lastResult.nombre,
-    macros: `P:${lastResult.proteinas}g · C:${lastResult.carbohidratos}g · G:${lastResult.grasas}g`,
-    kcal: lastResult.kcal, p: lastResult.proteinas, c: lastResult.carbohidratos, g: lastResult.grasas
-  });
+function addToLog(){
+  if(!lastResult) return;
+  logItems.push({ico:'📷',name:lastResult.nombre,macros:'P:'+lastResult.proteinas+'g · C:'+lastResult.carbohidratos+'g · G:'+lastResult.grasas+'g',kcal:lastResult.kcal,p:lastResult.proteinas,c:lastResult.carbohidratos,g:lastResult.grasas});
   updateRegistro();
-  goScreen('registro', document.getElementById('nav-reg'));
+  goScreen('registro',document.getElementById('nav-reg'));
 }
 
-function updateRegistro() {
-  const totK = logItems.reduce((s, i) => s + (i.kcal || 0), 0);
-  const totP = logItems.reduce((s, i) => s + (i.p || 0), 0);
-  const totC = logItems.reduce((s, i) => s + (i.c || 0), 0);
-  const totG = logItems.reduce((s, i) => s + (i.g || 0), 0);
-
-  const objK = menuData ? (menuData.raciones_totales * 120) : 1650;
-  const objP = menuData ? (menuData.macros_diarios.proteinas * 25) : 148;
-  const objC = menuData ? (menuData.macros_diarios.hidratos * 30) : 180;
-  const objG = menuData ? (menuData.macros_diarios.grasas * 15) : 55;
-
-  document.getElementById('rh-kcal').textContent = totK + ' kcal';
-  document.getElementById('rh-sub').textContent = 'de ~' + objK + ' kcal objetivo';
-
-  const pct = Math.min(Math.round((totK / objK) * 100), 100);
-  const circumference = 163;
-  document.getElementById('ring-prog').style.strokeDashoffset = circumference - (circumference * pct / 100);
-
-  document.getElementById('p-lbl').textContent = totP + 'g / ' + objP + 'g';
-  document.getElementById('c-lbl').textContent = totC + 'g / ' + objC + 'g';
-  document.getElementById('g-lbl').textContent = totG + 'g / ' + objG + 'g';
-  document.getElementById('p-bar').style.width = Math.min((totP / objP) * 100, 100) + '%';
-  document.getElementById('c-bar').style.width = Math.min((totC / objC) * 100, 100) + '%';
-  document.getElementById('g-bar').style.width = Math.min((totG / objG) * 100, 100) + '%';
-
-  const list = document.getElementById('food-list');
-  if (logItems.length === 0) {
-    list.innerHTML = '<div class="reg-empty">Todavía no has registrado nada hoy.<br>Analiza un plato con la cámara 📷</div>';
-  } else {
-    list.innerHTML = logItems.map(i => `<div class="fe"><span class="fe-ico">${i.ico}</span><div class="fe-info"><div class="fe-name">${i.name}</div><div class="fe-macros">${i.macros}</div></div><span class="fe-kcal">${i.kcal} kcal</span></div>`).join('');
-  }
-
-  const d = new Date();
-  document.getElementById('rh-date').textContent = d.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
+function updateRegistro(){
+  const totK=logItems.reduce((s,i)=>s+(i.kcal||0),0);
+  const totP=logItems.reduce((s,i)=>s+(i.p||0),0);
+  const totC=logItems.reduce((s,i)=>s+(i.c||0),0);
+  const totG=logItems.reduce((s,i)=>s+(i.g||0),0);
+  const objK=menuData?(menuData.raciones_totales*120):1650;
+  const objP=menuData?(menuData.macros_diarios.proteinas*25):148;
+  const objC=menuData?(menuData.macros_diarios.hidratos*30):180;
+  const objG=menuData?(menuData.macros_diarios.grasas*15):55;
+  document.getElementById('rh-kcal').textContent=totK+' kcal';
+  document.getElementById('rh-sub').textContent='de ~'+objK+' kcal objetivo';
+  const pct=Math.min(Math.round((totK/objK)*100),100);
+  document.getElementById('ring-prog').style.strokeDashoffset=163-(163*pct/100);
+  document.getElementById('p-lbl').textContent=totP+'g / '+objP+'g';
+  document.getElementById('c-lbl').textContent=totC+'g / '+objC+'g';
+  document.getElementById('g-lbl').textContent=totG+'g / '+objG+'g';
+  document.getElementById('p-bar').style.width=Math.min((totP/objP)*100,100)+'%';
+  document.getElementById('c-bar').style.width=Math.min((totC/objC)*100,100)+'%';
+  document.getElementById('g-bar').style.width=Math.min((totG/objG)*100,100)+'%';
+  const list=document.getElementById('food-list');
+  list.innerHTML=logItems.length===0?'<div class="reg-empty">Todavía no has registrado nada hoy.<br>Analiza un plato con la cámara 📷</div>':logItems.map(i=>'<div class="fe"><span class="fe-ico">'+i.ico+'</span><div class="fe-info"><div class="fe-name">'+i.name+'</div><div class="fe-macros">'+i.macros+'</div></div><span class="fe-kcal">'+i.kcal+' kcal</span></div>').join('');
+  const d=new Date();
+  document.getElementById('rh-date').textContent=d.toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long'});
 }
 
-/* ── INIT ── */
 updateRegistro();
-addChatMsg('ai', '¡Hola! 🌸 Soy tu asistente nutricional de MENOFIT360.<br><br>Para empezar, <strong>sube el PDF de tu menú</strong> con el botón de arriba. Lo leeré al instante y podré ayudarte con cualquier cambio o receta, respetando siempre tus raciones. 💪');
+addChatMsg('ai','¡Hola! 🌸 Soy tu asistente nutricional de MENOFIT360.<br><br>Para empezar, <strong>sube el PDF de tu menú</strong> con el botón de arriba. Lo leeré al instante y podré ayudarte con cualquier cambio o receta. 💪');
 </script>
 </body>
 </html>
