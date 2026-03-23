@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MENOFIT360 — Asistente Nutricional</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --rose:#E8597A;--rose-light:#F9D0DA;--rose-mid:#F0A0B4;--rose-dark:#C03060;
+  --blush:#FDF0F3;--blush2:#FAE0E7;--border:#F0D0D8;
+  --text:#2A1520;--text2:#7A4D5A;--text3:#B08090;
+  --surface:#FFFFFF;--green:#4A8C6A;--green-bg:#E8F5EE;
+  --amber:#C87840;--amber-bg:#FBF0E5;
+}
+html,body{height:100%;font-family:'DM Sans',sans-serif;background:var(--blush);color:var(--text);}
+.app{display:flex;flex-direction:column;height:100vh;max-width:580px;margin:0 auto;background:var(--surface);}
+.header{background:var(--surface);border-bottom:1px solid var(--border);padding:13px 18px;display:flex;align-items:center;gap:12px;flex-shrink:0;}
+.logo{font-family:'Playfair Display',serif;font-size:17px;color:var(--rose-dark);}
+.logo span{font-style:italic;color:var(--rose);}
+.header-sub{font-size:12px;color:var(--text3);margin-top:1px;}
+.ai-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;flex-shrink:0;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.upload-banner{background:linear-gradient(135deg,var(--blush),var(--blush2));border-bottom:1px solid var(--border);padding:12px 18px;flex-shrink:0;}
+.upload-row{display:flex;align-items:center;gap:10px;}
+.upload-info{flex:1;}
+.upload-title{font-size:13px;font-weight:600;color:var(--text);}
+.upload-sub{font-size:11px;color:var(--text3);margin-top:1px;}
+.upload-btn{padding:7px 14px;border-radius:20px;background:var(--rose);color:#fff;border:none;font-size:12px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;transition:opacity .15s;position:relative;overflow:hidden;}
+.upload-btn:hover{opacity:.85;}
+.upload-btn input{position:absolute;inset:0;opacity:0;cursor:pointer;font-size:0;width:100%;height:100%;}
+.menu-loaded{display:none;align-items:center;gap:8px;background:var(--green-bg);border-radius:10px;padding:8px 12px;margin-top:8px;}
+.menu-loaded-text{font-size:12px;color:var(--green);font-weight:500;}
+.menu-day-tabs{display:none;gap:4px;margin-top:8px;overflow-x:auto;padding-bottom:2px;}
+.day-tab{padding:5px 12px;border-radius:16px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid var(--border);background:var(--surface);color:var(--text2);white-space:nowrap;transition:all .15s;font-family:'DM Sans',sans-serif;}
+.day-tab:hover{border-color:var(--rose);color:var(--rose);}
+.day-tab.active{background:var(--rose);color:#fff;border-color:var(--rose);}
+.plan-strip{background:var(--surface);border-bottom:1px solid var(--border);padding:8px 18px;flex-shrink:0;display:none;}
+.plan-strip-title{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--text3);margin-bottom:6px;}
+.plan-meals{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;}
+.plan-meal{background:var(--blush);border:1px solid var(--border);border-radius:10px;padding:6px 12px;white-space:nowrap;flex-shrink:0;cursor:pointer;transition:all .15s;}
+.plan-meal:hover{border-color:var(--rose);}
+.meal-name{font-size:12px;font-weight:500;color:var(--text);}
+.meal-raciones{font-size:11px;color:var(--text3);margin-top:1px;}
+.chat-area{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;}
+.msg{display:flex;gap:8px;align-items:flex-end;animation:fadeUp .2s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.msg.user{flex-direction:row-reverse;}
+.avatar-bubble{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:#fff;}
+.av-ai{background:linear-gradient(135deg,var(--rose),var(--rose-dark));}
+.av-user{background:linear-gradient(135deg,#9090A8,#707088);}
+.bubble{padding:11px 14px;border-radius:18px;max-width:84%;font-size:13px;line-height:1.6;}
+.bubble-ai{background:var(--blush);border-radius:18px 18px 18px 4px;color:var(--text);}
+.bubble-user{background:var(--rose);border-radius:18px 18px 4px 18px;color:#fff;}
+.bubble strong{font-weight:600;}
+.typing-dots{display:flex;gap:4px;padding:12px 14px;}
+.typing-dots span{width:7px;height:7px;border-radius:50%;background:var(--rose-mid);animation:bounce .9s infinite;}
+.typing-dots span:nth-child(2){animation-delay:.15s;}
+.typing-dots span:nth-child(3){animation-delay:.3s;}
+@keyframes bounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-7px)}}
+.quick-actions{padding:6px 14px;flex-shrink:0;display:flex;gap:6px;overflow-x:auto;}
+.quick-btn{white-space:nowrap;padding:7px 13px;border-radius:20px;border:1px solid var(--border);background:var(--surface);font-size:12px;font-weight:500;color:var(--text2);cursor:pointer;transition:all .15s;font-family:'DM Sans',sans-serif;flex-shrink:0;}
+.quick-btn:hover{border-color:var(--rose);color:var(--rose);background:var(--blush);}
+.input-area{padding:8px 14px 14px;border-top:1px solid var(--border);display:flex;gap:8px;align-items:flex-end;flex-shrink:0;}
+.input-wrap{flex:1;background:var(--blush);border:1px solid var(--border);border-radius:22px;display:flex;align-items:center;padding:2px 4px 2px 14px;transition:border-color .15s;}
+.input-wrap:focus-within{border-color:var(--rose);}
+textarea#msg-input{flex:1;border:none;background:transparent;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--text);resize:none;outline:none;max-height:100px;padding:8px 0;line-height:1.4;}
+textarea#msg-input::placeholder{color:var(--text3);}
+.send-btn{width:40px;height:40px;border-radius:50%;background:var(--rose);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:opacity .15s;}
+.send-btn:hover{opacity:.85;}
+.send-btn:disabled{opacity:.4;cursor:not-allowed;}
+.send-btn svg{width:15px;height:15px;fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;}
+.processing-overlay{display:none;position:fixed;inset:0;background:rgba(253,240,243,.93);z-index:100;flex-direction:column;align-items:center;justify-content:center;gap:14px;}
+.processing-overlay.show{display:flex;}
+.proc-spinner{width:48px;height:48px;border:3px solid var(--rose-light);border-top-color:var(--rose);border-radius:50%;animation:spin .8s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.proc-text{font-size:14px;color:var(--text2);font-weight:500;}
+.proc-sub{font-size:12px;color:var(--text3);}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="header">
+    <div style="flex:1">
+      <div class="logo">MENOFIT<span>360</span></div>
+      <div class="header-sub">Asistente nutricional</div>
+    </div>
+    <div class="ai-dot"></div>
+  </div>
+
+  <div class="upload-banner">
+    <div class="upload-row">
+      <div class="upload-info">
+        <div class="upload-title" id="upload-title">📄 Sube el menú semanal en PDF</div>
+        <div class="upload-sub" id="upload-sub">La IA leerá raciones y gramos automáticamente</div>
+      </div>
+      <label class="upload-btn">
+        Subir PDF
+        <input type="file" accept="application/pdf" id="pdf-input">
+      </label>
+    </div>
+    <div class="menu-loaded" id="menu-loaded">
+      <span>✅</span>
+      <span class="menu-loaded-text" id="menu-loaded-text"></span>
+    </div>
+    <div class="menu-day-tabs" id="day-tabs"></div>
+  </div>
+
+  <div class="plan-strip" id="plan-strip">
+    <div class="plan-strip-title" id="plan-strip-title">Día 1</div>
+    <div class="plan-meals" id="plan-meals"></div>
+  </div>
+
+  <div class="chat-area" id="chat-area"></div>
+
+  <div class="quick-actions">
+    <button class="quick-btn" onclick="sendQuick('¿Qué me toca comer hoy?')">📋 Ver menú de hoy</button>
+    <button class="quick-btn" onclick="sendQuick('Quiero cambiar la comida del mediodía manteniendo las mismas raciones')">🔄 Cambiar comida</button>
+    <button class="quick-btn" onclick="sendQuick('Dame una receta diferente para el desayuno con las mismas raciones')">👩‍🍳 Nueva receta</button>
+    <button class="quick-btn" onclick="sendQuick('No me gusta la cena de hoy, dame una alternativa con las mismas raciones')">🌙 Alternativa cena</button>
+    <button class="quick-btn" onclick="sendQuick('¿Qué alimentos me ayudan con los sofocos?')">🌡️ Sofocos</button>
+  </div>
+
+  <div class="input-area">
+    <div class="input-wrap">
+      <textarea id="msg-input" placeholder="Pregunta sobre tu menú, pide alternativas o recetas..." rows="1"></textarea>
+    </div>
+    <button class="send-btn" id="send-btn" onclick="sendMessage()">
+      <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </div>
+</div>
+
+<div class="processing-overlay" id="proc">
+  <div class="proc-spinner"></div>
+  <div class="proc-text">Leyendo tu menú PDF...</div>
+  <div class="proc-sub">Analizando raciones, gramos y estructura</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+let menuData = null;
+let history = [];
+let isTyping = false;
+let activeDay = '1';
+
+document.getElementById('pdf-input').addEventListener('change', async e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  showProc(true);
+  try {
+    const text = await readPDF(file);
+    await parseMenu(text);
+  } catch(err) {
+    showProc(false);
+    addMsg('ai', '❗ No pude leer el PDF. Inténtalo de nuevo.');
+    console.error(err);
+  }
+});
+
+async function readPDF(file) {
+  const buf = await file.arrayBuffer();
+  const pdf = await pdfjsLib.getDocument({ data: buf }).promise;
+  let out = '';
+  for (let i = 1; i <= pdf.numPages; i++) {
+    const page = await pdf.getPage(i);
+    const c = await page.getTextContent();
+    out += c.items.map(x => x.str).join(' ') + '\n';
+  }
+  return out;
+}
+
+async function parseMenu(raw) {
+  const res = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: 4000,
+      messages: [{ role: 'user', content: `Analiza este texto de un menú nutricional semanal y devuelve SOLO JSON válido sin markdown ni backticks.
+
+Estructura requerida:
+{
+  "raciones_totales": número,
+  "macros_diarios": {"proteinas": número, "hidratos": número, "grasas": número},
+  "distribucion": {
+    "desayuno": {"proteinas": número, "hidratos": número, "grasas": número},
+    "almuerzo": {"proteinas": número, "hidratos": número, "grasas": número},
+    "comida": {"proteinas": número, "hidratos": número, "grasas": número},
+    "merienda": {"proteinas": número, "hidratos": número, "grasas": número},
+    "cena": {"proteinas": número, "hidratos": número, "grasas": número}
+  },
+  "dias": {
+    "1": {
+      "desayuno": {"descripcion": "texto con gramos exactos", "raciones": "P:X HC:X G:X"},
+      "almuerzo": {"descripcion": "...", "raciones": "..."},
+      "comida": {"descripcion": "...", "raciones": "..."},
+      "merienda": {"descripcion": "...", "raciones": "..."},
+      "cena": {"descripcion": "...", "raciones": "..."}
+    }
+  }
+}
+
+Extrae TODOS los gramos y cantidades exactas. Incluye todos los días disponibles.
+
+TEXTO:
+${raw}` }]
+    })
+  });
+  const d = await res.json();
+  const txt = d.content.map(b => b.text || '').join('').trim().replace(/```json|```/g, '').trim();
+  menuData = JSON.parse(txt);
+  showProc(false);
+  renderMenu();
+}
+
+function renderMenu() {
+  const dias = Object.keys(menuData.dias || {});
+  document.getElementById('menu-loaded').style.display = 'flex';
+  document.getElementById('menu-loaded-text').textContent =
+    `${dias.length} días · ${menuData.raciones_totales} raciones/día · P:${menuData.macros_diarios.proteinas} HC:${menuData.macros_diarios.hidratos} G:${menuData.macros_diarios.grasas}`;
+  document.getElementById('upload-title').textContent = '✅ Menú cargado';
+  document.getElementById('upload-sub').textContent = `${dias.length} días disponibles`;
+
+  const tabs = document.getElementById('day-tabs');
+  tabs.style.display = 'flex';
+  tabs.innerHTML = '';
+  dias.forEach(d => {
+    const b = document.createElement('button');
+    b.className = 'day-tab' + (d === '1' ? ' active' : '');
+    b.textContent = 'Día ' + d;
+    b.onclick = () => selectDay(d);
+    tabs.appendChild(b);
+  });
+
+  selectDay('1');
+  history = [];
+  document.getElementById('chat-area').innerHTML = '';
+  addMsg('ai', `¡Menú cargado! 🌸<br><br>Ya conozco tu plan: <strong>${menuData.raciones_totales} raciones diarias</strong> con <strong>P:${menuData.macros_diarios.proteinas} · HC:${menuData.macros_diarios.hidratos} · G:${menuData.macros_diarios.grasas}</strong>.<br><br>Puedo ayudarte a ver tu menú de cada día, cambiar alimentos manteniendo tus raciones exactas, o proponerte recetas alternativas. ¿Qué necesitas? 😊`);
+}
+
+function selectDay(day) {
+  activeDay = day;
+  document.querySelectorAll('.day-tab').forEach(t => t.classList.toggle('active', t.textContent === 'Día ' + day));
+  const strip = document.getElementById('plan-strip');
+  const meals = document.getElementById('plan-meals');
+  document.getElementById('plan-strip-title').textContent = 'Día ' + day;
+  if (!menuData?.dias[day]) { strip.style.display = 'none'; return; }
+  strip.style.display = 'block';
+  meals.innerHTML = '';
+  const icons = { desayuno: '🌅', almuerzo: '🍎', comida: '🍽️', merienda: '☕', cena: '🌙' };
+  Object.entries(menuData.dias[day]).forEach(([k, v]) => {
+    const el = document.createElement('div');
+    el.className = 'plan-meal';
+    el.innerHTML = `<div class="meal-name">${icons[k]||'🍴'} ${k.charAt(0).toUpperCase()+k.slice(1)}</div><div class="meal-raciones">${v.raciones||''}</div>`;
+    el.onclick = () => sendQuick(`Día ${day}, ${k}: ${v.descripcion}. Explícame esta comida y si quiero puedo cambiar algún alimento manteniendo las raciones.`);
+    meals.appendChild(el);
+  });
+}
+
+function buildSystem() {
+  if (!menuData) return `Eres la asistente nutricional de MENOFIT360 para mujeres en menopausia. Aún no hay menú cargado. Pide a la usuaria que suba el PDF. Responde siempre en español.`;
+
+  const menuStr = Object.entries(menuData.dias).map(([d, cs]) =>
+    `DÍA ${d}:\n` + Object.entries(cs).map(([c, v]) => `  ${c.toUpperCase()} (${v.raciones}): ${v.descripcion}`).join('\n')
+  ).join('\n\n');
+
+  return `Eres la asistente nutricional de MENOFIT360, cálida y experta en nutrición para mujeres en menopausia.
+
+SISTEMA DE RACIONES:
+- Total diario: ${menuData.raciones_totales} raciones (P:${menuData.macros_diarios.proteinas} HC:${menuData.macros_diarios.hidratos} G:${menuData.macros_diarios.grasas})
+- Distribución por comida: ${Object.entries(menuData.distribucion).map(([c,v])=>`${c} P:${v.proteinas} HC:${v.hidratos} G:${v.grasas}`).join(' | ')}
+- 1 ración proteína ≈ 100-170g carne/pescado, 2 huevos, 35g jamón serrano, 50g pavo
+- 1 ración HC ≈ 20g pan, 60-65g patata, 30-40g arroz/pasta seco, 100-150g fruta
+- 1 ración grasa ≈ 5-10g AOVE, 15g queso, 15-30g aguacate
+
+MENÚ COMPLETO:
+${menuStr}
+
+REGLAS:
+1. Al proponer alternativas, mantén EXACTAMENTE las mismas raciones (P/HC/G) con gramos equivalentes
+2. Al proponer recetas, incluye ingredientes con gramos exactos respetando las raciones de esa comida
+3. Indica siempre las raciones de lo que sugieras (ej: P:1 HC:1,5 G:0,5)
+4. Responde en español, de forma cercana, máximo 220 palabras
+5. Usa emojis para hacer las respuestas más visuales
+6. Si la usuaria quiere cambiar algo, confirma si lo anotas en el plan
+7. Para síntomas de menopausia da consejos nutricionales específicos (fitoestrógenos, calcio, magnesio, omega-3)`;
+}
+
+async function sendMessage() {
+  const inp = document.getElementById('msg-input');
+  const text = inp.value.trim();
+  if (!text || isTyping) return;
+  inp.value = ''; inp.style.height = 'auto';
+  addMsg('user', text);
+  history.push({ role: 'user', content: text });
+  isTyping = true;
+  document.getElementById('send-btn').disabled = true;
+  showTyping();
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 1000, system: buildSystem(), messages: history })
+    });
+    const d = await res.json();
+    const reply = d.content.map(b => b.text||'').join('');
+    history.push({ role: 'assistant', content: reply });
+    removeTyping();
+    addMsg('ai', fmt(reply));
+  } catch(e) {
+    removeTyping();
+    addMsg('ai', '❗ Error de conexión. Inténtalo de nuevo.');
+  }
+  isTyping = false;
+  document.getElementById('send-btn').disabled = false;
+}
+
+function sendQuick(t) { document.getElementById('msg-input').value = t; sendMessage(); }
+
+function addMsg(role, html) {
+  const area = document.getElementById('chat-area');
+  const isU = role === 'user';
+  const d = document.createElement('div');
+  d.className = `msg ${isU ? 'user' : 'ai'}`;
+  d.innerHTML = `<div class="avatar-bubble ${isU?'av-user':'av-ai'}">${isU?'TÚ':'M'}</div><div class="bubble ${isU?'bubble-user':'bubble-ai'}">${html}</div>`;
+  area.appendChild(d);
+  area.scrollTop = area.scrollHeight;
+}
+
+function showTyping() {
+  const area = document.getElementById('chat-area');
+  const d = document.createElement('div');
+  d.className = 'msg ai'; d.id = 'typ';
+  d.innerHTML = `<div class="avatar-bubble av-ai">M</div><div class="bubble bubble-ai"><div class="typing-dots"><span></span><span></span><span></span></div></div>`;
+  area.appendChild(d); area.scrollTop = area.scrollHeight;
+}
+function removeTyping() { const e = document.getElementById('typ'); if(e) e.remove(); }
+function fmt(t) { return t.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\*(.*?)\*/g,'<em>$1</em>').replace(/\n\n/g,'<br><br>').replace(/\n/g,'<br>'); }
+function showProc(s) { document.getElementById('proc').classList.toggle('show', s); }
+
+const ta = document.getElementById('msg-input');
+ta.addEventListener('input', () => { ta.style.height='auto'; ta.style.height=Math.min(ta.scrollHeight,100)+'px'; });
+ta.addEventListener('keydown', e => { if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage();} });
+
+addMsg('ai', `¡Hola! 🌸 Soy tu asistente nutricional de MENOFIT360.<br><br>Para empezar, <strong>sube el PDF de tu menú semanal</strong> usando el botón de arriba. Lo leeré automáticamente y podré ayudarte con cualquier cambio o receta nueva, respetando siempre tus raciones exactas. 💪`);
+</script>
+</body>
+</html>
